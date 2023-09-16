@@ -1,0 +1,20 @@
+//具防彈跳電路的8位元累加器
+module Acc8_DC (btn,reset,clk,sout0,sout1);
+
+input  btn , reset , clk ;
+output [6:0]  sout0, sout1 ;
+
+wire Acc_clk;
+//防彈跳電路
+Debounce_circuit DC0(.Din(btn),
+							 .Dout(Acc_clk),
+							 .clk(clk),
+		                .reset(reset));	
+//引入Acc8
+Acc8 A0(.reset(reset),
+			.clk(Acc_clk),
+			.w_en(1'b1),
+			.sout1(sout1),
+			.sout0(sout0));
+
+endmodule			

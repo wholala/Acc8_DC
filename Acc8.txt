@@ -1,0 +1,27 @@
+//8位元累加器
+module Acc8(reset,clk,w_en,sout1,sout0);
+input reset , clk , w_en ;
+output [6:0] sout1 ,sout0 ;
+
+wire [7:0] Din , Dout ;
+
+//引入8位元超前進位加法器
+CLA8 A0(.A(Dout),
+			.B(8'd1),
+			.Cin(1'b0),
+			.S(Din),
+			.Cout());
+//引入8位元正反器			
+DFF8 D0(.Din(Din),
+			.reset(reset),
+			.w_en(w_en),
+			.clk(clk),
+			.Dout(Dout));
+			
+			
+			 
+Seven_Segment S0(.Din(Dout[3:0]), .Dout(sout0));
+Seven_Segment S1(.Din(Dout[7:4]), .Dout(sout1));
+
+endmodule 			 
+				

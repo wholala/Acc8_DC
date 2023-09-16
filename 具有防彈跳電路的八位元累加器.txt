@@ -1,0 +1,7 @@
+Acc8_DC =具有防彈跳電路的八位元累加器
+Acc8    =八位元累加器
+CLG     =前瞻進位產生器
+CLA    =超前進位加法器
+FA     =全加器
+DFF    =正反器
+Debounce_circuit = 防彈跳電路
